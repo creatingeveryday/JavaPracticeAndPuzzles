@@ -14,3 +14,5 @@
 - 정렬된 배열에서는 이진 검색이 가능하다. 배열의 중간 인덱스의 값과 찾고자 하는 값을 비교한 후 검색 범위를 계속 조정해나가는 방식으로 빠르게 검색이 가능하다. 
 
 ![2_2_BinarySearch](./puzzle_img/2_2_BinarySearch.png)
+
+![2_2_BinarySearch02](./puzzle_img/2_2_BinarySearch02.png)
