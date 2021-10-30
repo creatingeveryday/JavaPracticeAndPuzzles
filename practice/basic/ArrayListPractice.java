@@ -3,6 +3,8 @@ package practice.basic;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
+import java.util.Vector;
 
 public class ArrayListPractice {
 
@@ -86,6 +88,9 @@ public class ArrayListPractice {
 		
 		list2.set(4, "BB");
 		
+		List list5 = list2;
+		
+		
 		System.out.println(list.retainAll(list2)); // list2 컬렉션과의 교집합만 list 컬렉션으로 변경
 		
 		for(int i = list2.size()-1; i >= 0; i--) {
@@ -115,6 +120,24 @@ public class ArrayListPractice {
 		for(int i = 0; i < list.size(); i++) {
 			System.out.println(list.get(i));
 		}
+		
+		System.out.println("--------------------------");
+		
+		Vector v = new Vector(7);
+		v.add("1");
+		v.add("2");
+		v.add("3");
+		v.add("4");
+		v.add("5");
+		v.trimToSize();
+		v.ensureCapacity(10);
+		v.setSize(7);
+		
+		v.clear();
+		
+		System.out.println(v);
+		System.out.println(v.size());
+		System.out.println(v.capacity());
 		
 
 	}
