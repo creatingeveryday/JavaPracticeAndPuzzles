@@ -31,7 +31,7 @@ public class ArrayListPractice {
 		System.out.println(list2);
 		Collections.sort(list2);
 		System.out.println(list2);
-		System.out.println(list2.indexOf(4));
+		System.out.println(list2.indexOf(new Integer(2)));
 	
 //		for(int i = list2.size()-1;i>=0;i--) {
 //			list2.remove(i);

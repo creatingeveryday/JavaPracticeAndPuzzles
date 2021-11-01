@@ -8,33 +8,33 @@ public class LinkedListPractice {
 
 	public static void main(String[] args) {
 		LinkedList list = new LinkedList();
-		list.add(5);
-		list.add(4);
-		list.add(4);
-		list.add(3);
-		list.add(2);
-		list.add(2);
-		list.add(1);
-		list.add(0);
+		list.add(new Integer(5));
+		list.add(new Integer(4));
+		list.add(new Integer(4));
+		list.add(new Integer(3));
+		list.add(new Integer(2));
+		list.add(new Integer(2));
+		list.add(new Integer(1));
+		list.add(new Integer(0));
 		
 		List list2 = new LinkedList(list.subList(0, 3));
 		list2.add("처");
 		list2.add("음");
 		
-		System.out.println(list.contains(1));
+		System.out.println(list.contains(new Integer(1)));
 		System.out.println(list.containsAll(list2));
 		System.out.println(list.get(0));
-		System.out.println(list.indexOf(2));
+		System.out.println(list.indexOf(new Integer(2)));
 		System.out.println(list.isEmpty());
-		System.out.println(list.lastIndexOf(2));
+		System.out.println(list.lastIndexOf(new Integer(2)));
 		System.out.println(list.getLast());
 		System.out.println(list.element());
 		System.out.println(list.offer(list2));
 		System.out.println(list.pollLast());
-		list.push(-1);
+		list.push(new Integer(-1));
 		list.pop();
-		System.out.println(list.removeFirstOccurrence(4));
-		System.out.println(list.removeLastOccurrence(2));
+		System.out.println(list.removeFirstOccurrence(new Integer(4)));
+		System.out.println(list.removeLastOccurrence(new Integer(2)));
 		
 		System.out.println(list);
 		System.out.println(list2);
