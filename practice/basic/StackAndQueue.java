@@ -15,6 +15,7 @@ public class StackAndQueue {
 		goURL("2.유튭");
 		goURL("3.다찾아");
 		goURL("4.음악들어");
+		goURL("5.뉴스모음사이트");
 		
 		printStatus();
 		
@@ -30,11 +31,23 @@ public class StackAndQueue {
 		System.out.println("---앞으로 버튼 누른후---");
 		printStatus();
 		
+		goForward();
+		System.out.println("---앞으로 버튼 누른후---");
+		printStatus();
+		
 		goURL("포스팃");
 		System.out.println("---새주소이동 버튼 누른후---");
 		printStatus();
 		
 		
+		System.out.println("---최초화면으로 이동 ---");
+		int backSize = back.size();
+		for(int i =0; i < backSize-1 ;i++) {//최초화면으로 이동 
+			goBack();
+//			printStatus();
+		}
+		
+		printStatus();
 		
 		
 		
