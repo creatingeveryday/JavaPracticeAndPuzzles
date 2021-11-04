@@ -9,7 +9,7 @@ public class BOJ_2438 {
 		int N = sc.nextInt();
 		for(int i=0;i<N;i++) {
 			
-			for(int j = i;j<N;j++) {
+			for(int j = 0 ;j<=i;j++) {
 				
 				System.out.print("*");
 			}
