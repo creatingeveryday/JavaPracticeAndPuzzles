@@ -20,8 +20,7 @@ public class ManagementMiniProject {
 		int itemCounter=0;
 		while(true) {
 			
-			System.out.println(itemCounter+"번째 제품정보를 입력하세요.");
-			
+			System.out.print(itemCounter+"번째 제품 정보를 입력하세요.");
 			System.out.print("제품코드 입력하세요>>");
 			itemCode[itemCounter] = sc.nextLine();
 			
@@ -38,11 +37,11 @@ public class ManagementMiniProject {
 			//재대로 입력받으면 계산시작하고 출력.
 			
 			stock[itemCounter] = receivingItem[itemCounter] - salesVolume[itemCounter]; //재고량 계산
-			sales[itemCounter] =(int)(productionCost[itemCounter] * 0.2 * salesVolume[itemCounter]);//판매금액 계산
+			sales[itemCounter] =(int)(productionCost[itemCounter] * 1.2 * salesVolume[itemCounter]);//판매금액 계산
 			profit[itemCounter] = sales[itemCounter] - (productionCost[itemCounter]*salesVolume[itemCounter]); // 수익금액 계산
 			
 			System.out.println("===========================================");
-			System.out.println("하이마트 제품코드별 보고서");
+			System.out.println("             하이마트 제품코드별 보고서");
 			System.out.println("-------------------------------------------");
 			System.out.println("제품코드  생산원가  입고량  판매량  재고량   판매금액   수입금액");
 			System.out.println("-------------------------------------------");
@@ -71,7 +70,7 @@ public class ManagementMiniProject {
 					sum[5] += profit[i];
 			}
 			for(int i = 0; i < average.length; i++) { //평균 계산
-				average[i] = sum[i] / itemCounter;
+				average[i] = sum[i] / (itemCounter+1);
 			}
 			
 			//최대값 배열 초기화.
@@ -106,7 +105,7 @@ public class ManagementMiniProject {
 				System.out.print(max[i]+"  ");
 			}
 			System.out.println();
-			System.out.println("===========================================");
+			System.out.printf("===========================================%n");
 			itemCounter++;
 			
 		} // while 종료
