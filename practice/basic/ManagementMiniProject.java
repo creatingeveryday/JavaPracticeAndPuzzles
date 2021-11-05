@@ -18,13 +18,15 @@ public class ManagementMiniProject {
 		
 		Scanner sc = new Scanner(System.in);
 		int itemCounter=0;
+		
 		while(true) {
-			
 			System.out.print(itemCounter+"번째 제품 정보를 입력하세요.");
-			System.out.print("제품코드 입력하세요>>");
+			sc.nextLine();
+			System.out.printf("제품코드 입력하세요.>>");
 			itemCode[itemCounter] = sc.nextLine();
 			
-			System.out.print("생산원가를 입력하세요>>.");
+			
+			System.out.print("생산원가를 입력하세요.>>");
 			productionCost[itemCounter] = sc.nextInt();
 
 			System.out.print("입고량을 입력하세요.>>");
@@ -82,10 +84,13 @@ public class ManagementMiniProject {
 			max[5] = profit[0];
 			
 			for(int i =0; i<=itemCounter; i++) { //최대값 계산
+				max[0] = (max[0] <= productionCost[i]) ? productionCost[i]: max[0];
+				max[1] = (max[1] <= receivingItem[i]) ? receivingItem[i]: max[1];
+				max[2] = (max[2] <= salesVolume[i]) ? salesVolume[i]: max[2];
+				max[3] = (max[3] <= stock[i]) ? stock[i]: max[3];
+				max[4] = (max[4] <= sales[i]) ? sales[i]: max[4];
+				max[5] = (max[5] <= profit[i]) ? profit[i]: max[5];
 				
-				for(int j=0; j<max.length;j++) {
-					max[j] = (max[j] <= max[i]) ? max[i]: max[j];
-				}
 			}//최대값 계산 종료
 			
 			System.out.print("합계    "); //합계 출력
@@ -105,7 +110,7 @@ public class ManagementMiniProject {
 				System.out.print(max[i]+"  ");
 			}
 			System.out.println();
-			System.out.printf("===========================================%n");
+			System.out.println("===========================================");
 			itemCounter++;
 			
 		} // while 종료
