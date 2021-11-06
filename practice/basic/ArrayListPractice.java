@@ -2,7 +2,9 @@ package practice.basic;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 
@@ -13,7 +15,7 @@ public class ArrayListPractice {
 		ArrayList list = new ArrayList();
 		
 		list.add("5");
-		list.add(1,"4");
+		list.add("4");
 		
 		list.add("3");
 		list.add("2");
@@ -27,6 +29,18 @@ public class ArrayListPractice {
 		list2.add("1");
 //		list2.remove(2);  // 인덱스가 2인 객체 삭제 
 //		list2.remove(new Integer(5));  // 5를 삭제 
+		Iterator iter = list2.iterator();
+		while(iter.hasNext()) {
+			System.out.print(iter.next());
+			System.out.println("이터레이터로 읽었음.");
+		}
+		
+		iter = list2.iterator();  // 다시 쓸때는 iterator를 초기화해준후 사용해야 함. (hasNext 메서드가 false 리턴 )
+		while(iter.hasNext()) {
+			System.out.print(iter.next());
+			System.out.print("두번째 시도 ");
+			System.out.println("이터레이터로 읽었음.");
+		}
 		
 		System.out.println(list2);
 		Collections.sort(list2);
