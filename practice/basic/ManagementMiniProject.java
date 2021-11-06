@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class ManagementMiniProject {
 
 	public static void main(String[] args) {
-		//배열을 활용.
+		//배열을 활용...
 		
 		String[] itemCode = new String[5];//제품코드
 		int[] productionCost = new int[5];//생산원가
@@ -25,19 +25,15 @@ public class ManagementMiniProject {
 			System.out.printf("제품코드 입력하세요.>>");
 			itemCode[itemCounter] = sc.nextLine();
 			
-			
 			System.out.print("생산원가를 입력하세요.>>");
 			productionCost[itemCounter] = sc.nextInt();
-
+			
 			System.out.print("입고량을 입력하세요.>>");
 			receivingItem[itemCounter] = sc.nextInt();
-			
+
 			System.out.print("판매량을 입력하세요.>>");
 			salesVolume[itemCounter] = sc.nextInt();
-			
-			
-			//재대로 입력받으면 계산시작하고 출력.
-			
+			//입력완료 후 계산
 			stock[itemCounter] = receivingItem[itemCounter] - salesVolume[itemCounter]; //재고량 계산
 			sales[itemCounter] =(int)(productionCost[itemCounter] * 1.2 * salesVolume[itemCounter]);//판매금액 계산
 			profit[itemCounter] = sales[itemCounter] - (productionCost[itemCounter]*salesVolume[itemCounter]); // 수익금액 계산
