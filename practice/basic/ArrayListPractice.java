@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Vector;
 
 public class ArrayListPractice {
@@ -41,6 +42,29 @@ public class ArrayListPractice {
 			System.out.print("두번째 시도 ");
 			System.out.println("이터레이터로 읽었음.");
 		}
+		ListIterator it = list2.listIterator();
+		while(it.hasNext()) {
+			System.out.print("listIterator ");
+			System.out.println(it.next());
+		}
+		while(it.hasPrevious()) {
+			System.out.print("listIterator ");
+			System.out.println(it.previous());
+		}
+		ArrayList original = new ArrayList(10); 
+		ArrayList copy = new ArrayList(10);
+		for(int i = 0; i<10;i++) {
+			original.add(i+"");
+		}
+		System.out.println("오리지널출력"+original);
+		Iterator lto = original.iterator();
+		while(lto.hasNext()) {
+			copy.add(lto.next());
+			lto.remove();
+		}
+		System.out.println("오리지널출력"+original);
+		System.out.println("카피배열"+copy);
+		
 		
 		System.out.println(list2);
 		Collections.sort(list2);
