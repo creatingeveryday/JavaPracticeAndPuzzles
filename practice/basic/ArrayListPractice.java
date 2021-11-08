@@ -35,7 +35,6 @@ public class ArrayListPractice {
 			System.out.print(iter.next());
 			System.out.println("이터레이터로 읽었음.");
 		}
-		
 		iter = list2.iterator();  // 다시 쓸때는 iterator를 초기화해준후 사용해야 함. (hasNext 메서드가 false 리턴 )
 		while(iter.hasNext()) {
 			System.out.print(iter.next());
