@@ -2,7 +2,7 @@ package practice.basic;
 
 public class ClassSuperAndThis {
 
-	public static void main(String[] args) {
+	 static public void main(String[] arg) {
 		Car c = new Car("테슬라", 5000000, 1600);
 		System.out.println(c.name);
 		System.out.println(c.price);
@@ -28,6 +28,9 @@ public class ClassSuperAndThis {
 	}
 
 }
+
+
+
 
 class Machine {
 	int weight;
