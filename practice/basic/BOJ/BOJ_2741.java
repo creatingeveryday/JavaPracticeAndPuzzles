@@ -1,4 +1,4 @@
-package practice.basic;
+package practice.basic.BOJ;
 
 import java.util.Scanner;
 
