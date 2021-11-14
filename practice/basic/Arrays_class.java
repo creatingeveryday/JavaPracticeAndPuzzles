@@ -1,14 +1,15 @@
 package practice.basic;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -145,6 +146,84 @@ public class Arrays_class {
 //		alpa.removeAll(setB); 차집합  공통된 요소를 삭제. 
 //		alpa.addAll(setB); 합집합   setB의 모든 요소만 추가. 중복은 제외됨. 
 		System.out.println(alpa);
+		
+		System.out.println("==========TreeSet=============");
+		// treeSet 범위 검색에 매우 유리하다. 추가 및 삭제는 불리하다.
+		TreeSet tset = new TreeSet();
+		int[] score = {10,16,63,43,75,24,34,76,73,24,34,34,32,32,32,66,44,55,99,100};
+		for(int y = 0 ; y < score.length; y++) {
+			tset.add(score[y]);
+		}
+		System.out.println("tset : "+tset);
+		System.out.println(tset.headSet(44)); //44보다 작은 값 (44미만)
+		System.out.println(tset.tailSet(44));  // 44보다 큰 값 (44포함)
+		System.out.println(tset.subSet(30, 99)); 
+		System.out.println("==========HashMap=======================");
+		
+		HashMap hm = new HashMap();
+		HashMap hm2 = new HashMap();
+		hm.put(1, "오");
+		hm.put(2, "와");
+		hm.put(5, "싱"); //덮어져서 사라짐.
+		hm.put(5, "하하");
+		hm.put(8, null);//HashMap은 키와 값에  null 허용. 
+		hm.put(null, 9);
+		hm2.putAll(hm);
+		Object o2 = hm2.remove(1);
+		Object o3 = hm2.remove(7); // 없는 키 값 제거 시도. => null반환 
+		Object o = hm.clone();
+		hm.replace(2, "배");
+		hm.replace(2, "배", "기차");
+		boolean bo = hm.replace(2, "배", "사과");
+		System.out.println(bo);
+		
+		
+		
+		System.out.println("hm : "+hm);
+		System.out.println("hm2 : "+hm2);
+		System.out.println("Object o  = "+o);
+		System.out.println("Object o2 에서 제거된 값  = "+o2);
+		System.out.println("Object o3 에서 제거된 값  = "+o3);
+		System.out.println("size() :"+hm.size());
+		System.out.println("hm.containsKey(1): "+hm.containsKey(1));
+		System.out.println("hm.containsValue(\"하하\"): "+hm.containsValue("하하"));
+		System.out.println("hm.containsValue(\"apple\") : "+hm.containsValue("apple"));
+		System.out.println("hm.get(2) : "+hm.get(2));
+		System.out.println(hm.getOrDefault(5, "키를 찾을 수 없습니다."));
+		System.out.println(hm.getOrDefault(10, "키를 찾을 수 없습니다."));
+		
+		HashMap hashm = new HashMap();
+		hashm.put("myid", "5689");
+		hashm.put("asdf", "1111");
+		hashm.put("asdf", "5689");
+		
+		while(true) {
+			Scanner s = new Scanner(System.in);
+			System.out.println("id와 비밀번호를 입력하세요.");
+			System.out.print("id입력>");
+			String inputId = s.nextLine().trim();
+			System.out.print("비밀번호 입력>");
+			String inputPass = s.nextLine().trim();
+			
+			if(!hashm.containsKey(inputId)) {
+				System.out.println("id를 다시 확인해주세요.");
+				continue;
+			}
+			if(inputPass.equals(hashm.get(inputId))) {
+				System.out.println("로그인성공");
+				break;
+			}else {
+				System.out.println("비밀번호를 다시 확인해주세요.");
+			}
+			
+		}
+		
+		
+				 
+		
+		
+		
+		
 	}
 
 }
