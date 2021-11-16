@@ -16,32 +16,34 @@ public class AddressMangement {
 		} else if (inputLang == 1) {
 			book = new AddressBookEng();
 		}
-
-		while (true) {
+		boolean on = true;
+		while (on) {
 			book.displayMenu();
 			int selectMenu = s.nextInt();
 
-			if (0 == selectMenu) {
-				book.addRecord(); // 이름 ,전화번호
-				continue;
-			}
-
-			if (1 == selectMenu) {
-				book.getRecord();// "찾으려는 값"
-				continue;
-			}
-			if (2 == selectMenu) {
-				book.delRecord();// "삭제하려는 값"
-				continue;
-			}
-
-			if (3 == selectMenu) {
-				System.out.println(3);
-				break;
-			} else {
-				System.out.println("다시 입력해주세요.");
-				continue;
-			}
+			switch (selectMenu) {
+				case 0: {
+					book.addRecord(); // 이름 ,전화번호
+					continue;
+				}
+				case 1: {
+					book.getRecord();// "찾으려는 값"
+					continue;
+				}
+				case 2: {
+					book.delRecord();// "삭제하려는 값"
+					continue;
+				}
+				case 3: {
+					System.out.println(3);
+					on = false;
+					break;
+				}
+				default:{
+					System.out.println("다시 입력해주세요.(Try Again)");
+					continue;
+				}
+			} //switch
 
 		} // while
 
@@ -67,11 +69,8 @@ abstract class AddressBook {
 	Vector phoneBook = new Vector();
 
 	abstract void addRecord();
-
 	abstract void getRecord();
-
 	abstract void delRecord();
-
 	abstract void displayMenu();
 }
 
@@ -96,7 +95,6 @@ class AddressBookKor extends AddressBook {
 		System.out.print("전화번호를 입력하세요.(010-0000-0000)>");
 		String phoneNum = s.nextLine().trim();
 		phoneBook.add(new Entity(name, phoneNum));
-		
 
 	}
 
@@ -121,19 +119,20 @@ class AddressBookKor extends AddressBook {
 				count++;
 			}
 		} // for
-		
-		if(count==0) System.out.println("찾을 수 없습니다. 다시 시도하세요.");
-		
+
+		if (count == 0)
+			System.out.println("찾을 수 없습니다. 다시 시도하세요.");
+
 	}
 
 	@Override
 	void delRecord() {
 		Scanner s = new Scanner(System.in);
 		int count = 0;
-		
+
 		System.out.print("삭제하려는 이름을 입력하세요.>");
 		String value = s.nextLine().trim();
-		
+
 		for (int i = 0; i < phoneBook.size(); i++) {
 			Object o = phoneBook.get(i);
 			String name = "";
@@ -142,14 +141,14 @@ class AddressBookKor extends AddressBook {
 				name = e.name;
 			}
 			if (value.equalsIgnoreCase(name)) {
-				System.out.println(name+"이 삭제됬습니다.");
+				System.out.println(name + "이 삭제됬습니다.");
 				phoneBook.remove(i);
 				count++;
 			}
 		} // for
-		
-		if(count==0) System.out.println("삭제하려는 이름을 찾을 수 없습니다. 다시 시도해보세요.");
-		
+
+		if (count == 0)
+			System.out.println("삭제하려는 이름을 찾을 수 없습니다. 다시 시도해보세요.");
 
 	}
 
@@ -165,20 +164,18 @@ class AddressBookEng extends AddressBook {
 		System.out.println("2. Delete");
 		System.out.println("3. Quit");
 		System.out.print("Select Menu : ");
-		
 
 	}
 
 	@Override
 	void addRecord() {
-		
+
 		Scanner s = new Scanner(System.in);
 		System.out.print("Enter name...>");
 		String name = s.nextLine().trim();
 		System.out.print("Enter phone number... (010-0000-0000)>");
 		String phoneNum = s.nextLine().trim();
 		phoneBook.add(new Entity(name, phoneNum));
-		
 
 	}
 
@@ -203,9 +200,9 @@ class AddressBookEng extends AddressBook {
 				count++;
 			}
 		} // for
-		
-		if(count==0) System.out.println("Oh, Please Try again. I can't find anything.");
-		
+
+		if (count == 0)
+			System.out.println("Oh, Please Try again. I can't find anything.");
 
 	}
 
@@ -213,7 +210,7 @@ class AddressBookEng extends AddressBook {
 	void delRecord() {
 		Scanner s = new Scanner(System.in);
 		int count = 0;
-		
+
 		System.out.print("Do you want to delete? Please Enter name>");
 		String value = s.nextLine().trim();
 		for (int i = 0; i < phoneBook.size(); i++) {
@@ -225,13 +222,13 @@ class AddressBookEng extends AddressBook {
 			}
 			if (value.equalsIgnoreCase(name)) {
 				phoneBook.remove(i);
-				System.out.println(name+"is deleted.");
+				System.out.println(name + "is deleted.");
 				count++;
 			}
 		} // for
-		
-		if(count==0) System.out.println("Oh, Please Try again. I can't delete anything.");
-		
+
+		if (count == 0)
+			System.out.println("Oh, Please Try again. I can't delete anything.");
 
 	}
 
