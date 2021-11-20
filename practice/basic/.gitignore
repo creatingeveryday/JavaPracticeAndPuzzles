@@ -77,3 +77,7 @@
 /Parent1.class
 /P.class
 /C1.class
+/TryWithResources.class
+/CloseException.class
+/CloseableResource.class
+/WorkException.class
