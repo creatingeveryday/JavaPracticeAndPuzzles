@@ -4,16 +4,137 @@ import java.text.ChoiceFormat;
 import java.text.MessageFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.OffsetDateTime;
+import java.time.Period;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.time.temporal.ChronoField;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.Temporal;
+import java.time.temporal.TemporalAdjuster;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.StringTokenizer;
+
+class DayAfter3Days implements TemporalAdjuster {
+
+	@Override  //
+	public Temporal adjustInto(Temporal temporal) {
+		
+		return temporal.plus(3, ChronoUnit.DAYS);
+	}
+	
+}
 
 public class DateAndTime {
 
 	public static void main(String[] args) {
 		
+		
+		LocalDate today2 = LocalDate.now();
+		LocalDate date1 = LocalDate.of(2015, 12, 31);
+		LocalTime time1 = LocalTime.of(12, 34,56);
+		
+		Period pe = Period.between(date1, today2);
+		System.out.println(pe); //P 5Y 10M 29D
+		
+		boolean sameday = Period.between(date1, today2).isZero();
+		System.out.println(sameday); //false
+		LocalTime tnow = LocalTime.now();
+		Duration du = Duration.between(time1, tnow);
+		System.out.println(du);
+		LocalTime tempTime = LocalTime.of(0, 0).plusSeconds(du.getSeconds());
+		int hour = tempTime.getHour();
+		int minute = tempTime.getMinute();
+		int second = tempTime.getSecond();
+		System.out.println(hour+" "+minute+" "+second);
+		
+		LocalDateTime dt1 = LocalDateTime.of(date1, time1);
+		
+		ZoneId zid1 = ZoneId.of("Asia/Seoul");
+		ZonedDateTime zdt1 = dt1.atZone(zid1);
+		System.out.println(zdt1.getZone().getId()); //	Asia/Seoul
+		
+		ZonedDateTime seoulTime = ZonedDateTime.now();
+		System.out.println(seoulTime);
+		ZoneId nyId = ZoneId.of("America/New_York");
+		ZonedDateTime nyTime = ZonedDateTime.now().withZoneSameInstant(nyId);
+		System.out.println(nyTime);
+		
+		OffsetDateTime odt = zdt1.toOffsetDateTime();
+		System.out.println(odt);
+		
+		
+		
+		System.out.println("=======================");
+		
+//		Set <String> a = ZoneId.getAvailableZoneIds();
+//		Iterator<String> i2 = a.iterator();
+//		while(i2.hasNext()) {
+//			System.out.println(i2.next());
+//		}
+//		//    Asia/Seoul
+		
+		LocalDateTime dt = LocalDateTime.of(2020, 5, 5, 12, 10);
+		System.out.println("dt : "+ dt);
+		ZoneId zid = ZoneId.of("Asia/Seoul");
+		ZonedDateTime zdt = dt.atZone(zid);
+		System.out.println(zdt);
+		
+		ZonedDateTime nyTime2 = ZonedDateTime.now().withZoneSameInstant(ZoneId.of("America/New_York"));
+		System.out.println(nyTime2);
+		
+		LocalDate ld = LocalDate.now();
+		LocalTime lt = LocalTime.now();
+		OffsetDateTime ofd = OffsetDateTime.of(ld, lt, ZoneOffset.of("+9"));
+		System.out.println(ofd);
+		
+		System.out.println("==========================================");
+		LocalDate date = LocalDate.now();
+		System.out.println(date);
+		LocalTime time = LocalTime.now();
+		System.out.println(time);
+		LocalDateTime dateTime = LocalDateTime.now();
+		System.out.println(dateTime);
+		
+		date = LocalDate.of(2002, 7, 7);
+		date = date.withYear(2021);  //필드를 변경하는 메서드는 항상 새로운 객체를 생성해서 반환한다. 
+		date = date.withDayOfYear(365);
+		time = LocalTime.of(3, 33, 33, 777_777_777);
+		
+		dateTime = LocalDateTime.of(date, time);
+		System.out.println(dateTime);
+		
+		int minute2 = time.get(ChronoField.MINUTE_OF_HOUR);
+		System.out.println(minute2);
+		LocalDateTime tomorrow = dateTime.plus(1, ChronoUnit.DAYS);
+		System.out.println(tomorrow);
+		time = time.truncatedTo(ChronoUnit.HOURS);
+		System.out.println(time);//3:00
+		
+		System.out.println(date.getMonth());
+		System.out.println(date.getMonth().getValue());
+		System.out.println(ChronoField.HOUR_OF_DAY.range());
+		
+		Instant now = Instant.now();
+		now.getEpochSecond();
+		
+		Date date3 = new Date();
+		date3 = date3.from(now);
+		Instant i3 = date3.toInstant();
+		
+		
+		System.out.println("=================================");
 		// 데이터베이스 작업시 사용하면 좋을 것 같다.
 		Object[] arguments = {"홍길동","010-1111-2222","30","08-09","대한민국"};
 		
