@@ -14,6 +14,8 @@ import java.time.Period;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.Temporal;
@@ -40,13 +42,31 @@ public class DateAndTime {
 
 	public static void main(String[] args) {
 		
-		
 		LocalDate today2 = LocalDate.now();
 		LocalDate date1 = LocalDate.of(2015, 12, 31);
 		LocalTime time1 = LocalTime.of(12, 34,56);
 		
+		LocalDate dateParse = LocalDate.parse("2016-07-07",DateTimeFormatter.ISO_LOCAL_DATE);
+		System.out.println(dateParse);
+		
+		
+		
+		String yyyymmdd = DateTimeFormatter.ISO_LOCAL_DATE.format(today2);
+		String yyyymmdd2 = today2.format(DateTimeFormatter.ISO_LOCAL_DATE);
+		System.out.println(yyyymmdd);  // "2021-11-30"
+		System.out.println(yyyymmdd2);  // "2021-11-30"
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT);
+		DateTimeFormatter mFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM);
+		String shortFormat = formatter.format(LocalDate.now());
+		String mediumFormat = mFormatter.format(LocalDate.now());
+		System.out.println(shortFormat);  //21. 11. 30
+		System.out.println(mediumFormat); // 2021. 11. 30
+		
+		
 		Period pe = Period.between(date1, today2);
 		System.out.println(pe); //P 5Y 10M 29D
+		System.out.println("pe.toTotalMonths() :  "+pe.toTotalMonths()); //일 단위는 무시됨.
 		
 		boolean sameday = Period.between(date1, today2).isZero();
 		System.out.println(sameday); //false
@@ -58,6 +78,10 @@ public class DateAndTime {
 		int minute = tempTime.getMinute();
 		int second = tempTime.getSecond();
 		System.out.println(hour+" "+minute+" "+second);
+		
+		
+		System.out.println("du.toDays() : "+du.toDays());
+		System.out.println("du.toHours() : "+du.toHours());
 		
 		LocalDateTime dt1 = LocalDateTime.of(date1, time1);
 		
