@@ -71,6 +71,7 @@ public class Collections_Class_Practice {
 		while((obj=pq.poll())!=null) {
 			System.out.println(obj);
 		}
+		
 
 	}
 
