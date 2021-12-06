@@ -18,14 +18,16 @@ public class Generics_Practice {
 		list2.add(20);
 //		list2.add("30"); // 컴파일 에러 발생
 		System.out.println(list2);
-		
+		Integer a = list2.get(0);
+		int b = list2.get(0);
+		System.out.println(b);
 		System.out.println("============Generics 활용 ==================");
-		Box<Fruit> fruitBox = new Box<Fruit>();
+		Box<Fruit2> fruitBox = new Box<Fruit2>();
 		Box<Apple> appleBox = new Box<Apple>();
 		Box<Grape> grapeBox = new Box<Grape>();
 		Box<Toy> toyBox = new Box<Toy>();
 		
-		fruitBox.add(new Fruit());
+		fruitBox.add(new Fruit2());
 		fruitBox.add(new Apple());
 		fruitBox.add(new Grape());
 		//fruitBox.add(new Toy()); //에러. 
@@ -45,9 +47,9 @@ public class Generics_Practice {
 
 }
 
-class Fruit 			{ public String toString() { return "Fruit";} }
-class Apple extends Fruit { public String toString() { return "Apple";} }
-class Grape extends Fruit { public String toString() { return "Grape";} }
+class Fruit2 			{ public String toString() { return "Fruit";} }
+class Apple extends Fruit2 { public String toString() { return "Apple";} }
+class Grape extends Fruit2 { public String toString() { return "Grape";} }
 class Toy					 { public String toString() { return "Toy";} }
 class Box<T> {
 	ArrayList<T> list = new ArrayList<T>();
